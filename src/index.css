@@ -1,0 +1,50 @@
+/* src/App.css */
+
+/* Container for each PDF page */
+.pageContainer {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 4px;
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+/* Light hover effect to make pages feel interactive */
+.pageContainer:hover {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Transparent layer where PDF.js places text spans */
+.textLayer {
+  position: absolute;
+  inset: 0; /* shorthand for left:0, top:0, right:0, bottom:0 */
+  pointer-events: none; /* allow clicks to pass to canvas */
+}
+
+/* Highlight overlay for matched text */
+.highlight {
+  position: absolute;
+  background: rgba(255, 255, 0, 0.55);
+  border-radius: 4px;
+  
+  /* Give highlights a soft glow to stand out clearly */
+  box-shadow: 0 0 8px rgba(255, 255, 0, 0.6);
+
+  /* Allow clicks if we later want click-to-remove/highlight interactions */
+  pointer-events: auto;
+
+  /* Smooth fade-in when highlight appears */
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+/* Optional subtle animation for highlights */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
